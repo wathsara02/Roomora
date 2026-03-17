@@ -1,113 +1,102 @@
 # 🛋️ Roomora
-
 **Plan in 2D. Experience in 3D.**
 
-Roomora is an interactive room planning and furniture visualization app built for an HCI & Computer Graphics module. It lets users design floor layouts on a 2D canvas, then instantly switch to an immersive 3D view to see exactly how their room will look — before buying a single piece of furniture.
+Roomora is a premium, interactive room planning and furniture visualization application. It allows users to design floor layouts on a 2D canvas and instantly switch to an immersive, real-time 3D environment to experience their spatial designs.
 
-🌐 **Live Demo:** [roomora.vercel.app](https://roomora.vercel.app) *(or your deployed URL)*
+🌐 **Live Project:** [roomora.vercel.app](https://roomora.vercel.app)
 
 ---
 
-## ✨ Features
+## 📖 Academic Context & HCI Design
+This project was developed for a **Human-Computer Interaction (HCI) & Computer Graphics** module. The development followed a systematic user-centered design approach:
 
-| Feature | Details |
+- **HCI Principles:** We focused on **Visibility of system status** (real-time rendering), **Consistency** (standardized UI patterns), and **Error prevention** (drag-and-drop constraints).
+- **Usability Focus:** The interface is designed to reduce cognitive load, allowing novice users to create complex spatial designs without CAD experience.
+- **Computer Graphics:** Utilizes **React Three Fiber (R3F)** for high-performance WebGL rendering, implementing procedural mesh generation and real-time lighting.
+
+---
+
+## ✨ Core Features
+| Feature | Technical Implementation |
 |---|---|
-| **2D Room Editor** | Drag-and-drop furniture placement on a scaled grid |
-| **3D Visualizer** | Real-time 3D rendering with lighting, shadows & wall colors |
-| **Smart Walls** | Backface-culled walls — see inside the room without obstruction |
-| **Furniture Catalog** | 18+ items across Seating, Beds, Tables, Storage & Decor |
-| **Style Themes** | Modern Scandinavian, Industrial, etc. |
-| **Room Settings** | Adjust room width, length, and ceiling height on the fly |
-| **Export Layout** | Download your full room design as a structured JSON file |
-| **Project Dashboard** | Create, name, and manage multiple room designs |
-| **Fully Responsive** | Mobile-first design, works on all screen sizes |
+| **Intelligent 2D Editor** | Scaled grid system with snap-to-grid furniture placement. |
+| **Instant 3D Transition** | Seamless state synchronization between 2D coordinates and 3D space. |
+| **Smart Wall Culling** | Interactive wall transparency (backface culling) for better visibility. |
+| **Dynamic Catalog** | Multi-category furniture browse system with real-time state management. |
+| **Responsive Design** | Fluid layouts optimized for both desktop and mobile viewports. |
 
 ---
 
-## 🔧 Tech Stack
-
-- **Frontend:** React 19 + TypeScript
-- **Build Tool:** Vite 6
-- **Styling:** Tailwind CSS v4
-- **3D Engine:** React Three Fiber (R3F) + Drei
-- **State Management:** Zustand
-- **Routing:** React Router v7
-- **3D Models:** Procedural (code-generated) — no heavy GLTF files
+## 🔧 Technical Stack
+- **Framework:** [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Build Engine:** [Vite 6](https://vitejs.dev/)
+- **3D Engine:** [Three.js](https://threejs.org/) via [React Three Fiber](https://r3f.docs.pmndrs.ch/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **State Management:** [Zustand](https://github.com/pmndrs/zustand)
+- **Icons:** [Lucide React](https://lucide.dev/)
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+
-- npm
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/wathsara02/Roomora.git
-cd Roomora
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-### Build for Production
-
-```bash
-npm run build
-```
+## 🚀 Installation & Development
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/wathsara02/Roomora.git
+   cd Roomora
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Launch development server:**
+   ```bash
+   npm run dev
+   ```
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
 ---
 
-## 📁 Project Structure
-
-```
+## 📁 Project Architecture
+```text
 src/
 ├── components/
-│   ├── layout/         # Navbar, Footer, Logo
-│   └── planner/        # Editor2D, Viewer3D, Sidebar, Toolbar, PropertiesPanel
-│       └── furniture/  # ProceduralModels (3D furniture components)
-├── pages/              # Home, Catalog, Dashboard, RoomPlanner
-├── store/              # Zustand global store (useStore.ts)
-├── types/              # TypeScript interfaces
-└── lib/                # Utility functions
+│   ├── layout/         # Navigation, Global Shell, Footer
+│   └── planner/        # 2D Canvas, 3D Scene, Toolbar, Properties
+│       └── furniture/  # Procedural 3D Model logic
+├── pages/              # Route-level views (Home, Catalog, Visualizer)
+├── store/              # Zustand Store for central state (useStore.ts)
+├── types/              # Domain-specific TypeScript interfaces
+└── lib/                # Geometry utilities and math helpers
 ```
 
 ---
 
-## 🛠️ Deployment
+## 📜 Credits & Acknowledgments
+We would like to acknowledge the creators of the following open-source resources used in this project:
 
-This project is deployed on **Vercel** with a `vercel.json` configuration for SPA routing.
-
-To deploy your own fork:
-1. Push to GitHub
-2. Import the repo at [vercel.com/new](https://vercel.com/new)
-3. Vercel auto-detects Vite — no extra config needed
-4. Click **Deploy** ✅
+- **Graphics:** [Drei](https://github.com/pmndrs/drei) for advanced Three.js abstractions.
+- **Imagery:** [Unsplash](https://unsplash.com/) for professional interior design photography and textures.
+- **Tools:** [Lucide](https://lucide.dev/) for the consistent iconography system.
+- **Typography:** Inter and Outfit via [Google Fonts](https://fonts.google.com/).
 
 ---
 
-## 📸 Screenshots
+## 👥 Contributors
+- **Member 1:** Project Lead & Landing Page
+- **Member 2:** Requirements & Catalog
+- **Member 3:** UI/UX Design & Dashboard
+- **Member 4:** 2D Editor Logic
+- **Member 5:** 3D Graphics & Rendering
+- **Member 6:** User Testing & State Management
 
-| Home | Catalog | 3D Planner |
+---
+
+## 📸 Project Screenshots
+| Landing Page | 2D Planner | 3D Visualizer |
 |---|---|---|
-| *(Add screenshots here)* | *(Add screenshots here)* | *(Add screenshots here)* |
+| ![Home](public/models/cat_seating.png) | *(Add screenshot)* | *(Add screenshot)* |
 
 ---
-
-## 📖 Academic Context
-
-This project was developed as part of a **Human-Computer Interaction (HCI) & Computer Graphics** module coursework. Key focus areas:
-
-- **HCI Principles:** Intuitive drag-and-drop interaction, consistent visual hierarchy, responsive design
-- **3D Graphics:** Procedural mesh generation, real-time lighting, backface culling for smart walls
-- **Usability:** Empty state handling, immediate visual feedback, cross-device support
-
----
+*© 2026 Roomora Team - HCI & Computer Graphics Coursework.*
