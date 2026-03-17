@@ -111,11 +111,3 @@ This project was developed as part of a **Human-Computer Interaction (HCI) & Com
 - **Usability:** Empty state handling, immediate visual feedback, cross-device support
 
 ---
-
-## 📜 License
-
-This project is for educational purposes.
-
----
-
-*Built with ❤️ for HCI Coursework*
