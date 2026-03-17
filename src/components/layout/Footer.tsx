@@ -1,3 +1,4 @@
+import { Logo } from './Logo';
 
 export function Footer() {
     return (
@@ -38,3 +39,4 @@ export function Footer() {
         </footer>
     );
 }
+
