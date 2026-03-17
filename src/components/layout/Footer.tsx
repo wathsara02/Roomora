@@ -6,7 +6,7 @@ export function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center gap-2.5 mb-4">
-                            <img src="/brand.png" alt="Roomora" className="w-10 h-10 object-contain" />
+                            <Logo className="w-8 h-8" />
                             <span className="font-heading font-bold text-xl text-charcoal tracking-tight">Roomora</span>
                         </div>
                         <p className="text-gray-500 text-sm max-w-sm">

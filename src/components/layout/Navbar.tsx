@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { User, Menu, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useStore } from '../../store/useStore';
+import { Logo } from './Logo';
 
 export function Navbar() {
     const location = useLocation();
@@ -20,31 +21,34 @@ export function Navbar() {
     return (
         <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
+                <div className="flex justify-between items-center h-18 py-3">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center gap-2 group">
-                        <img
-                            src="/brand-icon.png"
-                            alt="Roomora icon"
-                            className="w-9 h-9 object-contain group-hover:scale-105 transition-transform"
-                        />
+                    <Link to="/" className="flex items-center gap-2.5 group">
+                        <Logo className="w-9 h-9 group-hover:scale-105 transition-transform" />
                         <span className="font-heading font-bold text-xl tracking-tight text-charcoal">Roomora</span>
                     </Link>
 
                     {/* Nav Links */}
                     <div className="hidden md:flex items-center gap-8">
-                        {links.map((link) => (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                className={cn(
-                                    'text-sm font-medium transition-colors hover:text-forest',
-                                    location.pathname === link.path ? 'text-forest' : 'text-gray-500'
-                                )}
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
+                        {links.map((link) => {
+                            const isActive = location.pathname === link.path ||
+                                (link.path !== '/' && location.pathname.startsWith(link.path));
+                            return (
+                                <Link
+                                    key={link.name}
+                                    to={link.path}
+                                    className={cn(
+                                        'relative text-base font-semibold tracking-wide transition-colors pb-1',
+                                        'after:absolute after:bottom-0 after:left-0 after:h-0.5 after:rounded-full after:transition-all after:duration-300',
+                                        isActive
+                                            ? 'text-forest after:w-full after:bg-forest'
+                                            : 'text-gray-500 hover:text-forest after:w-0 hover:after:w-full hover:after:bg-forest'
+                                    )}
+                                >
+                                    {link.name}
+                                </Link>
+                            );
+                        })}
                     </div>
 
                     {/* Right Section */}
