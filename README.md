@@ -87,19 +87,19 @@ We would like to acknowledge the creators of the following open-source resources
 ---
 
 ## 👥 Contributors
-- **Member 1:** Project Lead & Landing Page
-- [@ShanushkiBoshinayaka](https://github.com/ShanushkiBodhinayaka : Requirements & Catalog
+- [@ShehanPerera](https://github.com/ShehanPerera319) Project Initialization & Landing Page
+- [@DidulakaHirusha](https://github.com/DidulakaHirusha) : Requirements & Catalog
 - [@Sasindu26](https://github.com/sasindu26)  : UI/UX Design & Dashboard
 - [@Sulakshi20](https://github.com/Sulakshi20): 2D Editor Logic
-- **Member 5:** 3D Graphics, Rendering, & **Interactive 3D Object Manipulation**
-- **Member 6:** User Testing, State Management, & **Complex Feature Logic (*Pre-Made Room Template Cloning into 3D Space*)**
+- [@ShanushkiBoshinayaka](https://github.com/ShanushkiBodhinayaka): 3D Graphics, Rendering, & **Interactive 3D Object Manipulation**
+- [@wathssara02](https://github.com/wathsara02) : Project Lead, User Testing, State Management & Pre-Made Room Template Cloning into 3D Space
 
 ---
 
 ## 📸 Project Screenshots
 | Landing Page | 2D Planner | 3D Visualizer | Pre-Made Rooms | Checkout |
 |---|---|---|---|---|
-| ![Home](public/models/cat_seating.png) | ![2D Planner](public/Screenshots/2d_View.jpg) | *(Add screenshot)* | *(Add screenshot)* | *(Add screenshot)* |
+| ![Home](public/Screenshots/Home.jpg) | ![2D Planner](public/Screenshots/2d_View.jpg) | ![3D View](public/Screenshots/3D_View.jpg) | ![Pre-made room](public/Screenshots/Rooms.jpg) | ![Checkout](public/Screenshots/Checkout.jpg) |
 
 ---
 *© 2026 Roomora Team - HCI & Computer Graphics Coursework.*
