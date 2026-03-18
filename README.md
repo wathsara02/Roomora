@@ -23,6 +23,8 @@ This project was developed for a **Human-Computer Interaction (HCI) & Computer G
 | **Instant 3D Transition** | Seamless state synchronization between 2D coordinates and 3D space. |
 | **Smart Wall Culling** | Interactive wall transparency (backface culling) for better visibility. |
 | **Dynamic Catalog** | Multi-category furniture browse system with real-time state management. |
+| **Pre-Made Room Designs** | Curated catalog of room templates with one-click cloning into the planner. |
+| **Mock Checkout Flow**    | Shopping cart functionality to aggregate items and simulate a purchase. |
 | **Responsive Design** | Fluid layouts optimized for both desktop and mobile viewports. |
 
 ---
@@ -89,14 +91,14 @@ We would like to acknowledge the creators of the following open-source resources
 - **Member 3:** UI/UX Design & Dashboard
 - **Member 4:** 2D Editor Logic
 - **Member 5:** 3D Graphics & Rendering
-- **Member 6:** User Testing & State Management
+- **Member 6:** User Testing, State Management, & **Complex Feature Logic (*Pre-Made Room Template Cloning into 3D Space*)**
 
 ---
 
 ## 📸 Project Screenshots
-| Landing Page | 2D Planner | 3D Visualizer |
-|---|---|---|
-| ![Home](public/models/cat_seating.png) | *(Add screenshot)* | *(Add screenshot)* |
+| Landing Page | 2D Planner | 3D Visualizer | Pre-Made Rooms | Checkout |
+|---|---|---|---|---|
+| ![Home](public/models/cat_seating.png) | *(Add screenshot)* | *(Add screenshot)* | *(Add screenshot)* | *(Add screenshot)* |
 
 ---
 *© 2026 Roomora Team - HCI & Computer Graphics Coursework.*
