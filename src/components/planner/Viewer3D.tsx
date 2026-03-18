@@ -1,6 +1,6 @@
 import { Suspense, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment, ContactShadows, Grid, SoftShadows } from '@react-three/drei';
+import { OrbitControls, Environment, ContactShadows, Grid, SoftShadows, TransformControls } from '@react-three/drei';
 import * as THREE from 'three';
 import type { Project, PlacedFurnitureItem } from '../../types';
 import { useStore } from '../../store/useStore';
@@ -20,13 +20,16 @@ interface Viewer3DProps {
 const ProceduralFurniture = ({
     item,
     isSelected,
-    onSelect
+    onSelect,
+    orbitControlsRef
 }: {
     item: PlacedFurnitureItem,
     isSelected: boolean,
-    onSelect: () => void
+    onSelect: () => void,
+    orbitControlsRef: React.RefObject<any | null>
 }) => {
     const catalog = useStore(state => state.catalog);
+    const updateFurniture = useStore(state => state.updateFurniture);
     const meshRef = useRef<THREE.Group>(null);
 
     const cItem = catalog.find(c => c.id === item.catalogItemId);
@@ -64,10 +67,10 @@ const ProceduralFurniture = ({
         case 'item-18': ModelComponent = LoungeChair; break;
     }
 
-    return (
+    const content = (
         <group
-            position={[item.position[0], yPosition, item.position[2]]}
-            rotation={[item.rotation[0], item.rotation[1], item.rotation[2]]}
+            position={isSelected ? [0, 0, 0] : [item.position[0], yPosition, item.position[2]]}
+            rotation={isSelected ? [0, 0, 0] : [item.rotation[0], item.rotation[1], item.rotation[2]]}
             onClick={(e) => { e.stopPropagation(); onSelect(); }}
             ref={meshRef}
         >
@@ -83,9 +86,45 @@ const ProceduralFurniture = ({
             <ModelComponent w={w} h={h} d={d} color={color} />
         </group>
     );
+
+    if (isSelected) {
+        return (
+            <TransformControls
+                object={meshRef as any}
+                mode="translate"
+                position={[item.position[0], yPosition, item.position[2]]}
+                rotation={[item.rotation[0], item.rotation[1], item.rotation[2]]}
+                onMouseDown={() => {
+                    if (orbitControlsRef.current) {
+                        orbitControlsRef.current.enabled = false;
+                    }
+                }}
+                onMouseUp={() => {
+                    if (orbitControlsRef.current) {
+                        orbitControlsRef.current.enabled = true;
+                    }
+                    if (meshRef.current) {
+                        const newPos = meshRef.current.position;
+                        const newRot = meshRef.current.rotation;
+                        updateFurniture(item.id, {
+                            position: [newPos.x, newPos.y - (h / 2), newPos.z],
+                            rotation: [newRot.x, newRot.y, newRot.z]
+                        });
+                    }
+                }}
+                showY={false}
+            >
+                {content}
+            </TransformControls>
+        );
+    }
+
+    return content;
 };
 
 export default function Viewer3D({ project, selectedItemId, setSelectedItemId }: Viewer3DProps) {
+    const orbitControlsRef = useRef(null);
+
     const roomW = project.settings.roomDimensions.width;
     const roomL = project.settings.roomDimensions.length;
     const roomH = project.settings.roomDimensions.height || 2.8;
@@ -115,7 +154,7 @@ export default function Viewer3D({ project, selectedItemId, setSelectedItemId }:
             </div>
 
             <div className="absolute bottom-4 left-4 bg-black/40 backdrop-blur-sm rounded-lg px-4 py-2 text-xs font-medium text-white/70 z-10 font-mono pointer-events-none">
-                Left Click: Rotate | Right Click: Pan | Scroll: Zoom
+                Left Click: Rotate Cam / Move Item | Right Click: Pan | Scroll: Zoom
             </div>
 
             {/* R3F Canvas */}
@@ -199,12 +238,14 @@ export default function Viewer3D({ project, selectedItemId, setSelectedItemId }:
                             item={item}
                             isSelected={selectedItemId === item.id}
                             onSelect={() => setSelectedItemId(item.id)}
+                            orbitControlsRef={orbitControlsRef}
                         />
                     ))}
                 </Suspense>
 
                 {/* Controls */}
                 <OrbitControls
+                    ref={orbitControlsRef}
                     makeDefault
                     minPolarAngle={0}
                     maxPolarAngle={Math.PI / 2 - 0.05} // don't go below ground
