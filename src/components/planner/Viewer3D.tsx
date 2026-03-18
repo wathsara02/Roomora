@@ -67,59 +67,52 @@ const ProceduralFurniture = ({
         case 'item-18': ModelComponent = LoungeChair; break;
     }
 
-    const content = (
-        <group
-            position={isSelected ? [0, 0, 0] : [item.position[0], yPosition, item.position[2]]}
-            rotation={isSelected ? [0, 0, 0] : [item.rotation[0], item.rotation[1], item.rotation[2]]}
-            onClick={(e) => { e.stopPropagation(); onSelect(); }}
-            ref={meshRef}
-        >
-            {/* Selection Highlight outline effect */}
+    return (
+        <>
             {isSelected && (
-                <mesh position={[0, 0, 0]}>
-                    <boxGeometry args={[w + 0.1, h + 0.1, d + 0.1]} />
-                    <meshBasicMaterial color="#1E3F33" wireframe transparent opacity={0.3} />
-                </mesh>
+                <TransformControls
+                    object={meshRef as any}
+                    mode="translate"
+                    onMouseDown={() => {
+                        if (orbitControlsRef.current) {
+                            orbitControlsRef.current.enabled = false;
+                        }
+                    }}
+                    onMouseUp={() => {
+                        if (orbitControlsRef.current) {
+                            orbitControlsRef.current.enabled = true;
+                        }
+                        if (meshRef.current) {
+                            const newPos = meshRef.current.position;
+                            const newRot = meshRef.current.rotation;
+                            updateFurniture(item.id, {
+                                position: [newPos.x, newPos.y - (h / 2), newPos.z],
+                                rotation: [newRot.x, newRot.y, newRot.z]
+                            });
+                        }
+                    }}
+                    showY={false}
+                />
             )}
-
-            {/* Main Procedural Body */}
-            <ModelComponent w={w} h={h} d={d} color={color} />
-        </group>
-    );
-
-    if (isSelected) {
-        return (
-            <TransformControls
-                object={meshRef as any}
-                mode="translate"
+            <group
                 position={[item.position[0], yPosition, item.position[2]]}
                 rotation={[item.rotation[0], item.rotation[1], item.rotation[2]]}
-                onMouseDown={() => {
-                    if (orbitControlsRef.current) {
-                        orbitControlsRef.current.enabled = false;
-                    }
-                }}
-                onMouseUp={() => {
-                    if (orbitControlsRef.current) {
-                        orbitControlsRef.current.enabled = true;
-                    }
-                    if (meshRef.current) {
-                        const newPos = meshRef.current.position;
-                        const newRot = meshRef.current.rotation;
-                        updateFurniture(item.id, {
-                            position: [newPos.x, newPos.y - (h / 2), newPos.z],
-                            rotation: [newRot.x, newRot.y, newRot.z]
-                        });
-                    }
-                }}
-                showY={false}
+                onClick={(e) => { e.stopPropagation(); onSelect(); }}
+                ref={meshRef}
             >
-                {content}
-            </TransformControls>
-        );
-    }
+                {/* Selection Highlight outline effect */}
+                {isSelected && (
+                    <mesh position={[0, 0, 0]}>
+                        <boxGeometry args={[w + 0.1, h + 0.1, d + 0.1]} />
+                        <meshBasicMaterial color="#1E3F33" wireframe transparent opacity={0.3} />
+                    </mesh>
+                )}
 
-    return content;
+                {/* Main Procedural Body */}
+                <ModelComponent w={w} h={h} d={d} color={color} />
+            </group>
+        </>
+    );
 };
 
 export default function Viewer3D({ project, selectedItemId, setSelectedItemId }: Viewer3DProps) {
