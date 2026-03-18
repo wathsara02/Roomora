@@ -3,7 +3,7 @@
 
 Roomora is a premium, interactive room planning and furniture visualization application. It allows users to design floor layouts on a 2D canvas and instantly switch to an immersive, real-time 3D environment to experience their spatial designs.
 
-🌐 **Live Project:** [roomora.vercel.app](https://roomora.vercel.app)
+🌐 **Live Project:** [roomora.vercel.app](https://roomora-kappa.vercel.app/)
 
 ---
 
