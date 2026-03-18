@@ -1,15 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Search, Filter, LayoutDashboard, Box } from 'lucide-react';
+import { Search, Filter, LayoutDashboard, Box, ShoppingCart, CheckCircle } from 'lucide-react';
 import { useStore } from '../store/useStore';
+import { v4 as uuidv4 } from 'uuid';
 import { cn } from '../lib/utils';
 
 export default function Catalog() {
     const [searchParams, setSearchParams] = useSearchParams();
     const activeCategory = searchParams.get('category') || 'all';
     const catalog = useStore((state) => state.catalog);
+    const addToCart = useStore((state) => state.addToCart);
 
     const [searchQuery, setSearchQuery] = useState('');
+    const [notification, setNotification] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (notification) {
+            const timer = setTimeout(() => {
+                setNotification(null);
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [notification]);
+
+    const handleAddToCart = (item: any) => {
+        addToCart({
+            id: uuidv4(),
+            name: item.name,
+            price: item.price,
+            quantity: 1,
+            thumbnailPath: item.thumbnailPath,
+        });
+        setNotification(`${item.name} added to cart!`);
+    };
 
     const categories = ['all', 'seating', 'tables', 'storage', 'beds', 'decor'];
 
@@ -119,8 +142,15 @@ export default function Catalog() {
                                             <LayoutDashboard className="w-4 h-4" />
                                             Add to Room
                                         </Link>
-                                        <button className="flex items-center justify-center gap-2 py-2.5 bg-white border border-gray-200 text-charcoal rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
-                                            Details
+                                        <button
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                handleAddToCart(item);
+                                            }}
+                                            className="flex items-center justify-center gap-2 py-2.5 bg-white border border-gray-200 text-charcoal rounded-lg text-sm font-medium hover:bg-gray-50 hover:shadow-sm active:scale-95 transition-all"
+                                        >
+                                            <ShoppingCart className="w-4 h-4" />
+                                            Add to Cart
                                         </button>
                                     </div>
                                 </div>
@@ -141,6 +171,14 @@ export default function Catalog() {
                     </div>
                 )}
             </div>
+
+            {/* Notification Toast */}
+            {notification && (
+                <div className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-charcoal text-white px-6 py-3 rounded-full shadow-xl font-medium tracking-wide flex items-center gap-3 z-50 transition-all duration-300">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span>{notification}</span>
+                </div>
+            )}
         </div>
     );
 }
