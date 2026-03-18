@@ -17,7 +17,6 @@ export default function PreMadeRooms() {
             quantity: 1,
             thumbnailPath: room.imageUrl,
         });
-        alert(`${room.name} bundle added to cart!`);
     };
 
     return (
@@ -60,7 +59,7 @@ export default function PreMadeRooms() {
                             <div className="flex flex-col gap-3 mt-auto">
                                 <button
                                     onClick={() => handleAddToCart(room)}
-                                    className="w-full bg-forest text-white py-3 px-4 rounded-xl font-medium tracking-wide hover:bg-[#2A3F32] transition-colors flex items-center justify-center gap-2"
+                                    className="w-full bg-forest text-white py-3 px-4 rounded-xl font-medium tracking-wide hover:shadow-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                                 >
                                     <ShoppingCart className="w-5 h-5" />
                                     Add Bundle to Cart

@@ -141,12 +141,9 @@ export default function Checkout() {
                                 Processing Order...
                             </span>
                         ) : (
-                            'Place Mock Order'
+                            'Place Order'
                         )}
                     </button>
-                    <p className="mt-4 text-sm text-center text-gray-500">
-                        This is a simulated checkout. No real payment is required.
-                    </p>
                 </div>
             </div>
         </div>
