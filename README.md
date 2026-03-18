@@ -99,7 +99,7 @@ We would like to acknowledge the creators of the following open-source resources
 ## 📸 Project Screenshots
 | Landing Page | 2D Planner | 3D Visualizer | Pre-Made Rooms | Checkout |
 |---|---|---|---|---|
-| ![Home](public/models/cat_seating.png) | *(Add screenshot)* | *(Add screenshot)* | *(Add screenshot)* | *(Add screenshot)* |
+| ![Home](public/models/cat_seating.png) | ![2D Planner](public/Screenshots/2d_View.jpg) | *(Add screenshot)* | *(Add screenshot)* | *(Add screenshot)* |
 
 ---
 *© 2026 Roomora Team - HCI & Computer Graphics Coursework.*
