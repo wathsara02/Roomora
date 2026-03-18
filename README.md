@@ -89,7 +89,7 @@ We would like to acknowledge the creators of the following open-source resources
 ## 👥 Contributors
 - [@wathsara02](https://github.com/wathsara02): ***Project Lead***, 3D Graphics, Rendering, & **Interactive 3D Object Manipulation**
 - [@ShehanPerera](https://github.com/ShehanPerera319) Project Initialization & Landing Page
-- [@DidulakaHirusha](https://github.com/DidulakaHirusha) : Requirements & Catalog
+- [@DidulakaHirusha](https://github.com/DidulakaHirusha) : Requirements gathering & Catalog
 - [@Sasindu26](https://github.com/sasindu26)  : UI/UX Design & Dashboard
 - [@Sulakshi20](https://github.com/Sulakshi20): 2D Editor Logic
 - [@ShanushkiBoshinayaka](https://github.com/ShanushkiBodhinayaka) : User Testing, State Management & Pre-Made Room Template Cloning into 3D Space
