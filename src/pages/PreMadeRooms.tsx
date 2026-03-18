@@ -1,6 +1,7 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store/useStore';
-import { ShoppingCart, Edit2 } from 'lucide-react';
+import { ShoppingCart, Edit2, CheckCircle } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function PreMadeRooms() {
@@ -8,6 +9,16 @@ export default function PreMadeRooms() {
     const preMadeRooms = useStore((state) => state.preMadeRooms);
     const addToCart = useStore((state) => state.addToCart);
     const createProjectFromTemplate = useStore((state) => state.createProjectFromTemplate);
+    const [notification, setNotification] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (notification) {
+            const timer = setTimeout(() => {
+                setNotification(null);
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [notification]);
 
     const handleAddToCart = (room: any) => {
         addToCart({
@@ -17,6 +28,7 @@ export default function PreMadeRooms() {
             quantity: 1,
             thumbnailPath: room.imageUrl,
         });
+        setNotification(`${room.name} bundle added to cart!`);
     };
 
     return (
@@ -80,6 +92,14 @@ export default function PreMadeRooms() {
                     </div>
                 ))}
             </div>
+
+            {/* Notification Toast */}
+            {notification && (
+                <div className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-charcoal text-white px-6 py-3 rounded-full shadow-xl font-medium tracking-wide flex items-center gap-3 z-50 transition-all duration-300">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span>{notification}</span>
+                </div>
+            )}
         </div>
     );
 }
