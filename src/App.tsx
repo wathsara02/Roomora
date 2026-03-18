@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import Dashboard from './pages/Dashboard';
 import RoomPlanner from './pages/RoomPlanner';
+import PreMadeRooms from './pages/PreMadeRooms';
+import Checkout from './pages/Checkout';
 
 function App() {
   return (
@@ -15,8 +17,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalog" element={<Catalog />} />
+            <Route path="/pre-made-rooms" element={<PreMadeRooms />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/planner" element={<RoomPlanner />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </main>
         <Footer />

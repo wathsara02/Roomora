@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { User, Menu, X } from 'lucide-react';
+import { User, Menu, X, ShoppingCart } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useStore } from '../../store/useStore';
 import { Logo } from './Logo';
@@ -8,12 +8,15 @@ import { Logo } from './Logo';
 export function Navbar() {
     const location = useLocation();
     const user = useStore((state) => state.user);
+    const cart = useStore((state) => state.cart);
+    const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const links = [
         { name: 'Home', path: '/' },
         { name: 'Catalog', path: '/catalog' },
+        { name: 'Rooms', path: '/pre-made-rooms' },
         { name: 'Room Planner', path: '/planner' },
         { name: 'Dashboard', path: '/dashboard' },
     ];
@@ -57,6 +60,15 @@ export function Navbar() {
                             <User className="w-4 h-4" />
                             <span className="hidden sm:inline-block font-medium">{user?.name}</span>
                         </div>
+
+                        <Link to="/checkout" className="relative p-2 text-gray-500 hover:text-charcoal transition-colors">
+                            <ShoppingCart className="w-5 h-5" />
+                            {cartItemCount > 0 && (
+                                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white transform translate-x-1/4 -translate-y-1/4 bg-forest rounded-full">
+                                    {cartItemCount}
+                                </span>
+                            )}
+                        </Link>
 
                         {/* Mobile Menu Toggle */}
                         <button

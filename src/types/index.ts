@@ -47,3 +47,25 @@ export interface Project {
     settings: ProjectSettings;
     items: PlacedFurnitureItem[];
 }
+
+export interface CartItem {
+    id: string;
+    name: string;
+    price: number;
+    quantity: number;
+    thumbnailPath?: string;
+    catalogItemId?: string; // Optional, if it's a specific furniture item
+}
+
+export interface PreMadeRoom {
+    id: string;
+    name: string;
+    description: string;
+    imageUrl: string;
+    totalPrice: number;
+    items: { catalogItemId: string; quantity: number }[];
+    projectTemplate: {
+        settings: ProjectSettings;
+        items: Omit<PlacedFurnitureItem, 'id'>[];
+    };
+}

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { v4 as uuidv4 } from 'uuid';
-import type { FurnitureCatalogItem, Project, User, PlacedFurnitureItem, Vector3 } from '../types';
+import type { FurnitureCatalogItem, Project, User, PlacedFurnitureItem, Vector3, CartItem, PreMadeRoom } from '../types';
 
 // Mock Seed Data for Catalog
 export const CATALOG_ITEMS: FurnitureCatalogItem[] = [
@@ -25,6 +25,100 @@ export const CATALOG_ITEMS: FurnitureCatalogItem[] = [
     { id: 'item-18', name: 'Lounge Accent Chair', category: 'seating', dimensions: { width: 0.85, depth: 0.85, height: 0.95 }, price: 390, modelPath: '', thumbnailPath: '/models/armchair.png', defaultColor: '#B0C4DE', tags: ['Modern'] },
 ];
 
+export const PRE_MADE_ROOMS: PreMadeRoom[] = [
+    {
+        id: 'room-1',
+        name: 'Scandinavian Serenity',
+        description: 'A bright, airy living room featuring minimalist design and natural wood textures.',
+        imageUrl: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&q=80&w=1000',
+        totalPrice: 2058,
+        items: [
+            { catalogItemId: 'item-1', quantity: 1 },
+            { catalogItemId: 'item-5', quantity: 1 },
+            { catalogItemId: 'item-11', quantity: 1 },
+            { catalogItemId: 'item-12', quantity: 1 },
+            { catalogItemId: 'item-13', quantity: 1 },
+            { catalogItemId: 'item-18', quantity: 1 }
+        ],
+        projectTemplate: {
+            settings: {
+                wallColor: '#F5F5F0',
+                floorTexture: 'hardwood-1',
+                roomDimensions: { width: 6, length: 5, height: 2.8 }
+            },
+            items: [
+                { catalogItemId: 'item-1', position: [0, 0, -1], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-5', position: [0, 0, 0.5], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-11', position: [0, -0.01, 0], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-12', position: [2.5, 0, -2], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-13', position: [-2.5, 0, -2], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-18', position: [-1.5, 0, 1.5], rotation: [0, 0.5, 0], scale: [1, 1, 1] }
+            ]
+        }
+    },
+    {
+        id: 'room-2',
+        name: 'Modern Minimalist Bedroom',
+        description: 'Clean lines and a neutral palette create a calming sanctuary for rest.',
+        imageUrl: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=1000',
+        totalPrice: 2548,
+        items: [
+            { catalogItemId: 'item-7', quantity: 1 },
+            { catalogItemId: 'item-8', quantity: 1 },
+            { catalogItemId: 'item-9', quantity: 2 },
+            { catalogItemId: 'item-11', quantity: 1 },
+            { catalogItemId: 'item-13', quantity: 2 }
+        ],
+        projectTemplate: {
+            settings: {
+                wallColor: '#EAEAEA',
+                floorTexture: 'hardwood-2',
+                roomDimensions: { width: 5, length: 4, height: 2.8 }
+            },
+            items: [
+                { catalogItemId: 'item-7', position: [0, 0, -1], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-8', position: [-2, 0, 1], rotation: [0, 1.57, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-9', position: [-1.2, 0, -1], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-9', position: [1.2, 0, -1], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-11', position: [0, -0.01, -0.5], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-13', position: [-2.2, 0, -1.5], rotation: [0, 0, 0], scale: [1, 1, 1] }
+            ]
+        }
+    },
+    {
+        id: 'room-3',
+        name: 'Industrial Loft Dining',
+        description: 'Bold materials and sleek profiles define this contemporary dining space.',
+        imageUrl: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=1000',
+        totalPrice: 1640,
+        items: [
+            { catalogItemId: 'item-3', quantity: 1 },
+            { catalogItemId: 'item-4', quantity: 6 },
+            { catalogItemId: 'item-14', quantity: 1 },
+            { catalogItemId: 'item-12', quantity: 2 }
+        ],
+        projectTemplate: {
+            settings: {
+                wallColor: '#D3D3D3',
+                floorTexture: 'concrete',
+                roomDimensions: { width: 6, length: 4.5, height: 3.2 }
+            },
+            items: [
+                { catalogItemId: 'item-3', position: [0, 0, 0], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-4', position: [-0.6, 0, -0.6], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-4', position: [0, 0, -0.6], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-4', position: [0.6, 0, -0.6], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-4', position: [-0.6, 0, 0.6], rotation: [0, 3.14, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-4', position: [0, 0, 0.6], rotation: [0, 3.14, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-4', position: [0.6, 0, 0.6], rotation: [0, 3.14, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-14', position: [-2.5, 0, 0], rotation: [0, 1.57, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-12', position: [2.5, 0, -1.8], rotation: [0, 0, 0], scale: [1, 1, 1] },
+                { catalogItemId: 'item-12', position: [-2.5, 0, 1.8], rotation: [0, 0, 0], scale: [1, 1, 1] }
+            ]
+        }
+    }
+];
+
 const DEFAULT_ROOM: Project['settings'] = {
     wallColor: '#FAFAF8',
     floorTexture: 'hardwood-1',
@@ -34,16 +128,24 @@ const DEFAULT_ROOM: Project['settings'] = {
 interface AppState {
     user: User | null;
     catalog: FurnitureCatalogItem[];
+    preMadeRooms: PreMadeRoom[];
     projects: Project[];
     activeProjectId: string | null;
+    cart: CartItem[];
 
     // Actions
     login: (user: User) => void;
     logout: () => void;
     createProject: (name: string) => string;
+    createProjectFromTemplate: (template: PreMadeRoom) => string;
     loadProject: (id: string) => void;
     deleteProject: (id: string) => void;
     updateProjectSettings: (settings: Partial<Project['settings']>) => void;
+
+    // Cart Actions
+    addToCart: (item: CartItem) => void;
+    removeFromCart: (itemId: string) => void;
+    clearCart: () => void;
 
     // Planner Actions (Operates on active project)
     addFurniture: (catalogItemId: string, position?: Vector3) => void;
@@ -56,8 +158,10 @@ export const useStore = create<AppState>()(
         (set) => ({
             user: { id: 'test-user-1', name: 'Student Designer', role: 'student' },
             catalog: CATALOG_ITEMS,
+            preMadeRooms: PRE_MADE_ROOMS,
             projects: [],
             activeProjectId: null,
+            cart: [],
 
             login: (user) => set({ user }),
             logout: () => set({ user: null }),
@@ -71,6 +175,30 @@ export const useStore = create<AppState>()(
                     settings: DEFAULT_ROOM,
                     items: []
                 };
+                set((state) => ({
+                    projects: [...state.projects, newProject],
+                    activeProjectId: newProject.id
+                }));
+                return newProject.id;
+            },
+
+            createProjectFromTemplate: (template) => {
+                const newProject: Project = {
+                    id: uuidv4(),
+                    name: `${template.name} (Copy)`,
+                    createdAt: Date.now(),
+                    updatedAt: Date.now(),
+                    settings: template.projectTemplate.settings,
+                    items: template.projectTemplate.items.map(item => {
+                        const catalogItem = CATALOG_ITEMS.find(c => c.id === item.catalogItemId);
+                        return {
+                            ...item,
+                            id: uuidv4(),
+                            color: catalogItem?.defaultColor
+                        } as PlacedFurnitureItem;
+                    })
+                };
+
                 set((state) => ({
                     projects: [...state.projects, newProject],
                     activeProjectId: newProject.id
@@ -95,6 +223,24 @@ export const useStore = create<AppState>()(
                     )
                 };
             }),
+
+            addToCart: (item) => set((state) => {
+                const existingItem = state.cart.find(i => i.id === item.id);
+                if (existingItem) {
+                    return {
+                        cart: state.cart.map(i =>
+                            i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+                        )
+                    };
+                }
+                return { cart: [...state.cart, item] };
+            }),
+
+            removeFromCart: (itemId) => set((state) => ({
+                cart: state.cart.filter(i => i.id !== itemId)
+            })),
+
+            clearCart: () => set({ cart: [] }),
 
             addFurniture: (catalogItemId, position = [0, 0, 0]) => set((state) => {
                 if (!state.activeProjectId) return state;
@@ -147,7 +293,7 @@ export const useStore = create<AppState>()(
         }),
         {
             name: 'hci-furniture-storage',
-            partialize: (state) => ({ projects: state.projects, user: state.user }),
+            partialize: (state) => ({ projects: state.projects, user: state.user, cart: state.cart }),
         }
     )
 );
