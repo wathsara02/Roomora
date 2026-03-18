@@ -92,7 +92,7 @@ We would like to acknowledge the creators of the following open-source resources
 - [@Sasindu26](https://github.com/sasindu26)  : UI/UX Design & Dashboard
 - [@Sulakshi20](https://github.com/Sulakshi20): 2D Editor Logic
 - [@ShanushkiBoshinayaka](https://github.com/ShanushkiBodhinayaka): 3D Graphics, Rendering, & **Interactive 3D Object Manipulation**
-- [@wathssara02](https://github.com/wathsara02) : Project Lead, User Testing, State Management & Pre-Made Room Template Cloning into 3D Space
+- [@wathsara02](https://github.com/wathsara02) : Project Lead, User Testing, State Management & Pre-Made Room Template Cloning into 3D Space
 
 ---
 
