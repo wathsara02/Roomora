@@ -22,6 +22,7 @@ This project was developed for a **Human-Computer Interaction (HCI) & Computer G
 | **Intelligent 2D Editor** | Scaled grid system with snap-to-grid furniture placement. |
 | **Instant 3D Transition** | Seamless state synchronization between 2D coordinates and 3D space. |
 | **Smart Wall Culling** | Interactive wall transparency (backface culling) for better visibility. |
+| **Interactive 3D Manipulation**| Direct object dragging and repositioning within the 3D environment using TransformControls. |
 | **Dynamic Catalog** | Multi-category furniture browse system with real-time state management. |
 | **Pre-Made Room Designs** | Curated catalog of room templates with one-click cloning into the planner. |
 | **Mock Checkout Flow**    | Shopping cart functionality to aggregate items and simulate a purchase. |
@@ -90,7 +91,7 @@ We would like to acknowledge the creators of the following open-source resources
 - **Member 2:** Requirements & Catalog
 - **Member 3:** UI/UX Design & Dashboard
 - **Member 4:** 2D Editor Logic
-- **Member 5:** 3D Graphics & Rendering
+- **Member 5:** 3D Graphics, Rendering, & **Interactive 3D Object Manipulation**
 - **Member 6:** User Testing, State Management, & **Complex Feature Logic (*Pre-Made Room Template Cloning into 3D Space*)**
 
 ---
