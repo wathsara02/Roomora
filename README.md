@@ -88,7 +88,7 @@ We would like to acknowledge the creators of the following open-source resources
 
 ## 👥 Contributors
 - **Member 1:** Project Lead & Landing Page
-- **Member 2:** Requirements & Catalog
+- [@ShanushkiBoshinayaka](https://github.com/ShanushkiBodhinayaka : Requirements & Catalog
 - [@Sasindu26](https://github.com/sasindu26)  : UI/UX Design & Dashboard
 - [@Sulakshi20](https://github.com/Sulakshi20): 2D Editor Logic
 - **Member 5:** 3D Graphics, Rendering, & **Interactive 3D Object Manipulation**
