@@ -23,7 +23,7 @@ export default function Home() {
                             </h1>
                             <p className="text-lg md:text-xl text-gray-500 mb-10 leading-relaxed font-light">
                                 Visualize premium furniture in 2D and immersive 3D.
-                                Mix, match, and curate your space before you buy.
+                                Mix, match and curate your space before you buy.
                             </p>
                             <div className="flex flex-wrap items-center gap-4">
                                 <Link

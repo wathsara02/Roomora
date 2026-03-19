@@ -1,0 +1,32 @@
+Work Division (6 Members)
+Split the report sections and code areas as follows. Each person must also make their own Git commits for their section.
+
+-------------------------------------------------------------------------------------------------------------------------
+| Member   | Report Section             | Code Area to Own (Commit these!)                      | Video Segment           |
+-------------------------------------------------------------------------------------------------------------------------
+| Member 1 | §1 Intro + §2 Background   | App.tsx, Navbar.tsx, Footer.tsx, package.json, config | Intro + Problem/Solution|
+|          |                            | files                                                 | (0:00–2:00)             |
+-------------------------------------------------------------------------------------------------------------------------
+| Member 2 | §4 Gathering Data          | Catalog.tsx                                           | Catalog Code Walkthrough|
+|          |                            |                                                       | (2:00–3:30)             |
+-------------------------------------------------------------------------------------------------------------------------
+| Member 3 | §5 Design (Personas/Stories| Dashboard.tsx, Home.tsx                               | Dashboard Code          |
+|          |                            |                                                       | Walkthrough (3:30–5:00) |
+-------------------------------------------------------------------------------------------------------------------------
+| Member 4 | §6 Implementation          | Editor2D.tsx, RoomPlanner.tsx                         | 2D Editor Walkthrough   |
+|          | (2D Logic)                 |                                                       | (5:00–7:00)             |
+-------------------------------------------------------------------------------------------------------------------------
+| Member 5 | §6 Implementation          | Viewer3D.tsx, furniture/ (3D Models)                  | 3D Graphics Walkthrough |
+|          | (3D/Graphics)              |                                                       | (7:00–9:00)             |
+|          |                            | *COMPLEX WORK HIGHLIGHT:*                             |                         |
+|          |                            | Engineered Interactive 3D Manipulation via R3F        |                         |
+|          |                            | TransformControls to sync live coordinate updates.    |                         |
+-------------------------------------------------------------------------------------------------------------------------
+| Member 6 | §7 Evaluation + §8         | useStore.ts, types/, README.md, PreMadeRooms.tsx,     | State & Eval Walkthrough|
+|          | Summary                    | Checkout.tsx                                          | (9:00–12:00)            |
+|          |                            |                                                       |                         |
+|          |                            | *COMPLEX WORK HIGHLIGHT:*                             |                         |
+|          |                            | Engineered the complex state management logic to clone|                         |
+|          |                            | Pre-Made Room templates and accurately transition     |                         |
+|          |                            | them into the editable 3D Workspace environment.      |                         |
+-------------------------------------------------------------------------------------------------------------------------

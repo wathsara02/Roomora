@@ -46,6 +46,7 @@ export interface Project {
     updatedAt: number;
     settings: ProjectSettings;
     items: PlacedFurnitureItem[];
+    imageUrl?: string;
 }
 
 export interface CartItem {

@@ -173,7 +173,8 @@ export const useStore = create<AppState>()(
                     createdAt: Date.now(),
                     updatedAt: Date.now(),
                     settings: DEFAULT_ROOM,
-                    items: []
+                    items: [],
+                    imageUrl: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=1000' // Default Empty Room
                 };
                 set((state) => ({
                     projects: [...state.projects, newProject],
@@ -188,6 +189,7 @@ export const useStore = create<AppState>()(
                     name: `${template.name} (Copy)`,
                     createdAt: Date.now(),
                     updatedAt: Date.now(),
+                    imageUrl: template.imageUrl,
                     settings: template.projectTemplate.settings,
                     items: template.projectTemplate.items.map(item => {
                         const catalogItem = CATALOG_ITEMS.find(c => c.id === item.catalogItemId);

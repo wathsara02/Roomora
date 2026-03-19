@@ -89,10 +89,25 @@ export default function Dashboard() {
                                     className="aspect-video bg-gray-50 relative flex items-center justify-center cursor-pointer overflow-hidden"
                                     onClick={() => handleOpen(project.id)}
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                                    <LayoutPanelLeft className="w-12 h-12 text-gray-300 group-hover:scale-110 transition-transform duration-500" strokeWidth={1} />
+                                    {project.imageUrl ? (
+                                        <img
+                                            src={project.imageUrl}
+                                            alt={project.name}
+                                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                        />
+                                    ) : (
+                                        <img
+                                            src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=1000"
+                                            alt="Room placeholder"
+                                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 mix-blend-multiply"
+                                        />
+                                    )}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent"></div>
+                                    {!project.imageUrl && (
+                                        <LayoutPanelLeft className="w-12 h-12 text-white/50 absolute z-10 group-hover:scale-110 transition-transform duration-500" strokeWidth={1} />
+                                    )}
 
-                                    <div className="absolute bottom-3 left-3 flex gap-2">
+                                    <div className="absolute bottom-3 left-3 flex gap-2 z-10">
                                         <span className="px-2 py-1 bg-white/90 backdrop-blur-sm shadow-sm rounded-md text-xs font-semibold text-charcoal">
                                             {project.items.length} Items
                                         </span>

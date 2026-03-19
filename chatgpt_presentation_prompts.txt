@@ -1,0 +1,66 @@
+Project Context for ChatGPT:
+Roomora is a premium, interactive room planning and furniture visualization web application built with React 19, TypeScript, Vite, Tailwind CSS, Zustand (state management), and React Three Fiber (3D graphics). The app allows users to design floor layouts on a 2D canvas and instantly switch to an immersive, real-time 3D environment to experience their spatial designs.
+
+The team consists of 6 members. Act as an expert presentation speech writer. I will provide you with the exact files each member worked on and the important code snippets they should highlight in their presentation video segment. 
+
+Please generate a professional, engaging, and clear script for each of the 6 members based on their designated section, ensuring the flow is continuous from Member 1 to Member 6.
+
+=== MEMBER 1 ===
+Report Section: Introduction & Background
+Time: 0:00 - 2:00
+Files Owned: `App.tsx`, `Navbar.tsx`, `Footer.tsx`, `package.json`, config files.
+What they developed: Set up the overall project architecture, responsive shell, routing, dependencies, and core navigation.
+Code to show & explain:
+- Show `App.tsx` and explain the React Router setup `<Routes>` that dictates the fundamental flow of the Single Page Application between Home, Catalog, Dashboard, Planner, Pre-Made Rooms, and Checkout.
+- Explain the responsive layout structure in `Navbar.tsx` and how it extracts the user's cart state from Zustand to display a dynamic badge next to the shopping cart icon showing the user exactly how many items they have.
+
+
+=== MEMBER 2 ===
+Report Section: Gathering Data
+Time: 2:00 - 3:30
+Files Owned: `Catalog.tsx`
+What they developed: Engineered the interactive furniture browsing experience, integrating the product dataset.
+Code to show & explain:
+- Show `Catalog.tsx` specifically the `filter` and `map` logic where they extract standard furniture items from the system store based on the active category (e.g. seating, tables) or search queries.
+- Explain how data (price, dimensions) flows into the UI cards and the function they wrote to pass the user's selected component directly into the `useStore` to save state.
+
+
+=== MEMBER 3 ===
+Report Section: Design (Personas/Stories)
+Time: 3:30 - 5:00
+Files Owned: `Dashboard.tsx`, `Home.tsx`
+What they developed: Built the stylish landing page and the user dashboard that organizes the user's multiple projects.
+Code to show & explain:
+- Explain the `handleCreate` and `handleOpen` functions inside `Dashboard.tsx`.
+- Talk about how the UI dynamically maps through `projects.length > 0` to display beautiful cards representing each unique room design a user has made, complete with timestamps and item counts.
+
+
+=== MEMBER 4 ===
+Report Section: Implementation (2D Logic)
+Time: 5:00 - 7:00
+Files Owned: `Editor2D.tsx`, `RoomPlanner.tsx`
+What they developed: Built the core 2D editing logic allowing users to drag, drop, and rotate items on a 2D grid overlay.
+Code to show & explain:
+- Highlight the logic in `Editor2D.tsx` (the math/canvas dragging state). Explain how cursor coordinates are mapped to the scaled room grid.
+- Briefly mention the structural shell of `RoomPlanner.tsx` which handles the seamless switching action between their `viewMode === '2D'` interface and Member 5's `Viewer3D` component.
+
+
+=== MEMBER 5 ===
+Report Section: Implementation (3D/Graphics)
+Time: 7:00 - 9:00
+Files Owned: `Viewer3D.tsx`, `furniture/` (3D Models)
+What they developed: Rendered the immersive 3D scene using React Three Fiber, handling lighting, camera controls, textures, 3D mesh rendering, and fully interactive 3D object manipulation.
+Code to show & explain:
+- Show the React Three Fiber `<Canvas>` setup in `Viewer3D.tsx`.
+- Explain how they set up `<ambientLight>` and `<directionalLight>` for realism.
+- **IMPORTANT COMPLEX HIGHLIGHT:** Highlight the use of `@react-three/drei`'s `<TransformControls>`. Explain how they engineered the logic so that grabbing a piece of furniture in the 3D space temporarily disables the camera (`OrbitControls`), records the new X/Z spatial coordinates on mouse drop, and dispatches them to the global `useStore` to keep the 2D floor plan perfectly synchronized.
+
+
+=== MEMBER 6 ===
+Report Section: Evaluation + Summary
+Time: 9:00 - 12:00
+Files Owned: `useStore.ts`, `types/index.ts`, `README.md`, `PreMadeRooms.tsx`, `Checkout.tsx`
+What they developed: Handled the global application state using Zustand, wrote the complete data typings, managed the Checkout mock-flow, and engineered a complex feature mapping predefined room templates into the 3D Planner space.
+Code to show & explain:
+- **IMPORTANT COMPLEX HIGHLIGHT:** Show the `createProjectFromTemplate` action inside `useStore.ts`. Explain how this complex logic loops through an array of predefined, perfectly positioned furniture items (the template), generates new unique `uuid`s on the fly, and duplicates them into a brand new user `Project` state, allowing the user to seamlessly edit a pre-made room.
+- Show `Checkout.tsx` state extraction via `const cart = useStore(...)` and the function defining `totalAmount` logic using `.reduce()`.
